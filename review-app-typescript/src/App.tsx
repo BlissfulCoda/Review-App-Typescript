@@ -1,7 +1,9 @@
+import Header from "./Components/Header";
+
 export default function App() {
   return (
     <div>
-      <h4>Welcome to React & Typescript</h4>
+      <Header title="Review App" />
     </div>
   );
 }
