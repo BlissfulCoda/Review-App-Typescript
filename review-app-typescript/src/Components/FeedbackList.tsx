@@ -10,7 +10,7 @@ export default function FeedbackList(): JSX.Element {
     FeedbackContext
   ) as FeedbackContextType;
   if (!feedback || feedback.length === 0) {
-    return <p>loading....</p>;
+    return <Spinner />;
   }
   return isLoading ? (
     <Spinner />
