@@ -1,3 +1,4 @@
+import { AiTwotoneDelete, AiTwotoneEdit } from "react-icons/ai";
 import { FeedbackDataInterface } from "../Data/FeedbackData";
 import Card from "./Shared/Card";
 
@@ -10,6 +11,12 @@ export default function FeedbackItem({ data }: DataInterface): JSX.Element {
   return (
     <Card>
       <div className="num-display">{rating}</div>
+      <button className="close">
+        <AiTwotoneDelete color="purple" />
+      </button>
+      <button className="edit">
+        <AiTwotoneEdit color="purple" />
+      </button>
       <div className="text-display">{text}</div>
     </Card>
   );

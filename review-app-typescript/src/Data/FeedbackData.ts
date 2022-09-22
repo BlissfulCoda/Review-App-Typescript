@@ -4,6 +4,11 @@ export interface FeedbackDataInterface {
   text: string;
 }
 
+export interface FeedbackContextType {
+  feedback: FeedbackDataInterface[];
+};
+
+
 const FeedbackData: FeedbackDataInterface[] = [
   {
     id: 3,

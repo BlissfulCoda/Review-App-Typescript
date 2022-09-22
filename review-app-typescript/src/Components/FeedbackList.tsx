@@ -1,14 +1,11 @@
-import { FeedbackDataInterface } from "../Data/FeedbackData";
+import { FeedbackContextType } from "../Data/FeedbackData";
+import { useContext } from "react";
+import FeedbackContext from "../Context/FeedbackContext";
 
 import FeedbackItem from "./FeedbackItem";
 
-interface FeedbackListInterface {
-  feedback: FeedbackDataInterface[];
-}
-
-export default function FeedbackList({
-  feedback,
-}: FeedbackListInterface): JSX.Element {
+export default function FeedbackList(): JSX.Element {
+  const { feedback } = useContext(FeedbackContext) as FeedbackContextType;
   if (!feedback || feedback.length === 0) {
     return <p>loading....</p>;
   }

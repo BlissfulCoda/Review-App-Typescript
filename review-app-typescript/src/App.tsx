@@ -1,20 +1,20 @@
-import { useState } from "react";
-import FeedbackData, { FeedbackDataInterface } from "./Data/FeedbackData";
+import { FeedbackProvider } from "./Context/FeedbackContext";
 
 import Header from "./Components/Header";
 import FeedbackList from "./Components/FeedbackList";
 import FeedbackStats from "./Components/FeedbackStats";
 
 export default function App() {
-  const [feedback, setFeedback] =
-    useState<FeedbackDataInterface[]>(FeedbackData);
+
   return (
-    <div>
-      <Header title="Review App" />
-      <div className="container">
-        <FeedbackStats feedback={feedback}/>
-        <FeedbackList feedback={feedback} />
+    <FeedbackProvider>
+      <div>
+        <Header title="Review App" />
+        <div className="container">
+          <FeedbackStats />
+          <FeedbackList />
+        </div>
       </div>
-    </div>
+    </FeedbackProvider>
   );
 }
