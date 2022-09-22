@@ -20,7 +20,7 @@ export function FeedbackProvider({
     item: {},
     edit: false,
   });
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   /*------ Edit an item -------*/
   const editFeedback = (item: FeedbackDataInterface) => {

@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useContext } from "react";
 import { FeedbackContextType } from "../Data/FeedbackData";
 import FeedbackContext from "../Context/FeedbackContext";
@@ -16,9 +17,19 @@ export default function FeedbackList(): JSX.Element {
     <Spinner />
   ) : (
     <div>
-      {feedback.map((item) => (
-        <FeedbackItem key={item.id} data={item} />
-      ))}
+      <AnimatePresence>
+        {feedback.map((item) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ ease: "easeInOut", duration: 1 }}
+          >
+            <FeedbackItem key={item.id} data={item} />
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
   );
 }
