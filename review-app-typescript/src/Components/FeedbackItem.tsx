@@ -12,7 +12,9 @@ interface DataInterface {
 }
 
 export default function FeedbackItem({ data }: DataInterface): JSX.Element {
-  const { handleDelete } = useContext(FeedbackContext) as FeedbackContextType;
+  const { handleDelete, editFeedback } = useContext(
+    FeedbackContext
+  ) as FeedbackContextType;
   const { id, rating, text } = data;
   return (
     <Card>
@@ -21,7 +23,7 @@ export default function FeedbackItem({ data }: DataInterface): JSX.Element {
         <AiTwotoneDelete onClick={() => handleDelete(id)} color="red" />
       </button>
       <button className="edit">
-        <AiTwotoneEdit color="purple" />
+        <AiTwotoneEdit onClick={() => editFeedback(data)} color="purple" />
       </button>
       <div className="text-display">{text}</div>
     </Card>

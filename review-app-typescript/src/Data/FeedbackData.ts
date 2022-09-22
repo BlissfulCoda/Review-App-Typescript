@@ -4,10 +4,17 @@ export interface FeedbackDataInterface {
   text: string;
 }
 
+export interface FeedbackEditInterface {
+  item: FeedbackDataInterface | any;
+  edit: boolean;
+}
+
 export interface FeedbackContextType {
   feedback: FeedbackDataInterface[];
+  feedbackEdit: FeedbackEditInterface;
   handleDelete: (id: number | string) => void;
   handleAddFeedback: (item: FeedbackDataInterface) => void;
+  editFeedback: (item: FeedbackDataInterface) => void;
 }
 
 const FeedbackData: FeedbackDataInterface[] = [

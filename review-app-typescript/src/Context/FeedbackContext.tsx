@@ -2,6 +2,7 @@ import React, { useState, createContext } from "react";
 import FeedbackData, {
   FeedbackDataInterface,
   FeedbackContextType,
+  FeedbackEditInterface,
 } from "../Data/FeedbackData";
 
 interface FeedbackContextInterface {
@@ -15,6 +16,18 @@ export function FeedbackProvider({
 }: FeedbackContextInterface): JSX.Element {
   const [feedback, setFeedback] =
     useState<FeedbackDataInterface[]>(FeedbackData);
+  const [feedbackEdit, setFeedbackEdit] = useState<FeedbackEditInterface>({
+    item: {},
+    edit: false,
+  });
+
+  /*------ Update an item -------*/
+  const editFeedback = (item: FeedbackDataInterface) => {
+    setFeedbackEdit({
+      item,
+      edit: true,
+    });
+  };
 
   /*------ Add an item -------*/
   const handleAddFeedback = (newFeedback: FeedbackDataInterface) => {
@@ -34,6 +47,8 @@ export function FeedbackProvider({
         feedback,
         handleDelete,
         handleAddFeedback,
+        editFeedback,
+        feedbackEdit,
       }}
     >
       {children}
