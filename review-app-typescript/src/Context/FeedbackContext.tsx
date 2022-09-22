@@ -18,7 +18,7 @@ export function FeedbackProvider({
 
   /*------ Add an item -------*/
   const handleAddFeedback = (newFeedback: FeedbackDataInterface) => {
-    console.log(newFeedback);
+    setFeedback([newFeedback, ...feedback]);
   };
 
   /*------ Delete an item -------*/
