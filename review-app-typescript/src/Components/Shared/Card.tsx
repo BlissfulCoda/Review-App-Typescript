@@ -1,5 +1,5 @@
 interface CardInterface {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   reverse: boolean;
 }
 

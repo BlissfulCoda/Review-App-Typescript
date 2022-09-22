@@ -1,7 +1,7 @@
 interface ButtonInterface {
   children: React.ReactNode;
-  version: string;
-  isDisabled: boolean;
+  version?: string;
+  isDisabled?: boolean;
   type?: "submit" | "button";
 }
 
@@ -22,5 +22,5 @@ Button.defaultProps = {
   type: "button",
   version: "primary",
   isDisabled: false,
-  children: "Click Me",
+  children: "Send",
 };

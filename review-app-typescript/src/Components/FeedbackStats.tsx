@@ -1,4 +1,4 @@
-import { FeedbackDataInterface, FeedbackContextType } from "../Data/FeedbackData";
+import { FeedbackContextType } from "../Data/FeedbackData";
 import { useContext } from "react";
 import FeedbackContext from "../Context/FeedbackContext";
 

@@ -16,6 +16,7 @@ export function FeedbackProvider({
   const [feedback, setFeedback] =
     useState<FeedbackDataInterface[]>(FeedbackData);
 
+  /*------ Delete an item -------*/
   const handleDelete = (id: number) => {
     if (window.confirm("Are you sure you want to delete this feedback ?")) {
       setFeedback(feedback.filter((item) => id !== item.id));
