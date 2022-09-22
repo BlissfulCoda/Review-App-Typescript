@@ -36,7 +36,7 @@ export function FeedbackProvider({
     setFeedback(data);
   };
 
-  /*------ Edit an item -------*/
+  /*------ EDIT an item -------*/
   const editFeedback = (item: FeedbackDataInterface) => {
     setFeedbackEdit({
       item,
@@ -44,7 +44,7 @@ export function FeedbackProvider({
     });
   };
 
-  /*------ Update an item -------*/
+  /*------ UPDATE an item -------*/
   const updateFeedback = async (
     id: string | number,
     upItem: FeedbackDataInterface
@@ -68,7 +68,7 @@ export function FeedbackProvider({
     );
   };
 
-  /*------ Add an item -------*/
+  /*------ ADD an item -------*/
   const handleAddFeedback = async (newFeedback: FeedbackDataInterface) => {
     const response = await fetch(`/feedback`, {
       method: "POST",
@@ -79,8 +79,8 @@ export function FeedbackProvider({
     setFeedback([data, ...feedback]);
   };
 
-  /*------ Delete an item -------*/
-  const handleDelete = async (id: number | string) => {
+  /*------ DELETE an item -------*/
+  const handleDelete = async (id: number | string | undefined) => {
     if (window.confirm("Are you sure you want to delete this feedback ?")) {
       await fetch(`/feedback/${id}`, { method: "DELETE" });
       setFeedback(feedback.filter((item) => id !== item.id));

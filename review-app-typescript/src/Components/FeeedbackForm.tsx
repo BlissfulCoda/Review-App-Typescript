@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import React, { useState, useContext, useEffect } from "react";
 import FeedbackContext from "../Context/FeedbackContext";
 import { FeedbackContextType } from "../Data/FeedbackData";
@@ -44,7 +43,6 @@ export default function FeedbackForm(): JSX.Element {
     e.preventDefault();
     if (text.length > 10) {
       const newFeedback = {
-        id: uuidv4(),
         text,
         rating,
       };

@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { FeedbackContextType } from "../Data/FeedbackData";
 import FeedbackContext from "../Context/FeedbackContext";
 import Spinner from "./Shared/Spinner";
-
 import FeedbackItem from "./FeedbackItem";
 
 export default function FeedbackList(): JSX.Element {
