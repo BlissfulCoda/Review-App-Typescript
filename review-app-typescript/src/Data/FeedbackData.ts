@@ -1,12 +1,13 @@
 export interface FeedbackDataInterface {
-  id: number;
+  id: number | string;
   rating: number;
   text: string;
 }
 
 export interface FeedbackContextType {
   feedback: FeedbackDataInterface[];
-  handleDelete: (id: number) => void;
+  handleDelete: (id: number | string) => void;
+  handleAddFeedback: (item: FeedbackDataInterface) => void;
 }
 
 const FeedbackData: FeedbackDataInterface[] = [

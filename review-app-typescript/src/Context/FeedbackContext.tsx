@@ -16,8 +16,13 @@ export function FeedbackProvider({
   const [feedback, setFeedback] =
     useState<FeedbackDataInterface[]>(FeedbackData);
 
+  /*------ Add an item -------*/
+  const handleAddFeedback = (newFeedback: FeedbackDataInterface) => {
+    console.log(newFeedback);
+  };
+
   /*------ Delete an item -------*/
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: number | string) => {
     if (window.confirm("Are you sure you want to delete this feedback ?")) {
       setFeedback(feedback.filter((item) => id !== item.id));
     }
@@ -28,6 +33,7 @@ export function FeedbackProvider({
       value={{
         feedback,
         handleDelete,
+        handleAddFeedback,
       }}
     >
       {children}
