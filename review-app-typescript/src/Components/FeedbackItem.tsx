@@ -1,5 +1,10 @@
+import { useContext } from "react";
 import { AiTwotoneDelete, AiTwotoneEdit } from "react-icons/ai";
-import { FeedbackDataInterface } from "../Data/FeedbackData";
+import {
+  FeedbackDataInterface,
+  FeedbackContextType,
+} from "../Data/FeedbackData";
+import FeedbackContext from "../Context/FeedbackContext";
 import Card from "./Shared/Card";
 
 interface DataInterface {
@@ -7,12 +12,13 @@ interface DataInterface {
 }
 
 export default function FeedbackItem({ data }: DataInterface): JSX.Element {
-  const { rating, text } = data;
+  const { handleDelete } = useContext(FeedbackContext) as FeedbackContextType;
+  const { id, rating, text } = data;
   return (
     <Card>
       <div className="num-display">{rating}</div>
       <button className="close">
-        <AiTwotoneDelete color="purple" />
+        <AiTwotoneDelete onClick={() => handleDelete(id)} color="red" />
       </button>
       <button className="edit">
         <AiTwotoneEdit color="purple" />
