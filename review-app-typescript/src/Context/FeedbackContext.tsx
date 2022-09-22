@@ -21,12 +21,28 @@ export function FeedbackProvider({
     edit: false,
   });
 
-  /*------ Update an item -------*/
+  /*------ Edit an item -------*/
   const editFeedback = (item: FeedbackDataInterface) => {
     setFeedbackEdit({
       item,
       edit: true,
     });
+  };
+
+  /*------ Update an item -------*/
+  const updateFeedback = (
+    id: string | number,
+    upItem: FeedbackDataInterface
+  ): void => {
+    setFeedback(
+      feedback.map((item) => {
+        if (item.id === id) {
+          return { ...feedback, ...upItem };
+        } else {
+          return item;
+        }
+      })
+    );
   };
 
   /*------ Add an item -------*/
@@ -49,6 +65,7 @@ export function FeedbackProvider({
         handleAddFeedback,
         editFeedback,
         feedbackEdit,
+        updateFeedback,
       }}
     >
       {children}

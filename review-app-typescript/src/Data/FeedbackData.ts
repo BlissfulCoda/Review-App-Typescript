@@ -15,6 +15,7 @@ export interface FeedbackContextType {
   handleDelete: (id: number | string) => void;
   handleAddFeedback: (item: FeedbackDataInterface) => void;
   editFeedback: (item: FeedbackDataInterface) => void;
+  updateFeedback: (id: number | string, item: FeedbackDataInterface) => void;
 }
 
 const FeedbackData: FeedbackDataInterface[] = [
