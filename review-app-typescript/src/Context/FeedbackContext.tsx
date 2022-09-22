@@ -1,5 +1,5 @@
-import React, { useState, createContext } from "react";
-import FeedbackData, {
+import React, { useState, createContext, useEffect } from "react";
+import {
   FeedbackDataInterface,
   FeedbackContextType,
   FeedbackEditInterface,
@@ -14,13 +14,27 @@ const FeedbackContext = createContext<FeedbackContextType | null>(null);
 export function FeedbackProvider({
   children,
 }: FeedbackContextInterface): JSX.Element {
-  const [feedback, setFeedback] =
-    useState<FeedbackDataInterface[]>(FeedbackData);
+  const [feedback, setFeedback] = useState<FeedbackDataInterface[]>([]);
   const [feedbackEdit, setFeedbackEdit] = useState<FeedbackEditInterface>({
     item: {},
     edit: false,
   });
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    fetchFeedbackData();
+    setIsLoading(false);
+  }, []);
+
+  /*------ Fetch REST API DATA -------*/
+  const fetchFeedbackData = async () => {
+    const response = await fetch(`/feedback?&_sort=id&_order=desc`, {
+      method: "GET",
+      headers: { Accept: "application/json" },
+    });
+    const data = await response.json();
+    setFeedback(data);
+  };
 
   /*------ Edit an item -------*/
   const editFeedback = (item: FeedbackDataInterface) => {
@@ -38,7 +52,7 @@ export function FeedbackProvider({
     setFeedback(
       feedback.map((item) => {
         if (item.id === id) {
-          return { ...feedback, ...upItem };
+          return { ...upItem, ...feedback };
         } else {
           return item;
         }
@@ -47,8 +61,14 @@ export function FeedbackProvider({
   };
 
   /*------ Add an item -------*/
-  const handleAddFeedback = (newFeedback: FeedbackDataInterface) => {
-    setFeedback([newFeedback, ...feedback]);
+  const handleAddFeedback = async (newFeedback: FeedbackDataInterface) => {
+    const response = await fetch(`/feedback`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newFeedback),
+    });
+    const data = await response.json();
+    setFeedback([data, ...feedback]);
   };
 
   /*------ Delete an item -------*/
