@@ -20,6 +20,7 @@ export function FeedbackProvider({
     item: {},
     edit: false,
   });
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   /*------ Edit an item -------*/
   const editFeedback = (item: FeedbackDataInterface) => {
@@ -66,6 +67,7 @@ export function FeedbackProvider({
         editFeedback,
         feedbackEdit,
         updateFeedback,
+        isLoading,
       }}
     >
       {children}

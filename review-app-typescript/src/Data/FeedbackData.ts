@@ -12,6 +12,7 @@ export interface FeedbackEditInterface {
 export interface FeedbackContextType {
   feedback: FeedbackDataInterface[];
   feedbackEdit: FeedbackEditInterface;
+  isLoading: boolean;
   handleDelete: (id: number | string) => void;
   handleAddFeedback: (item: FeedbackDataInterface) => void;
   editFeedback: (item: FeedbackDataInterface) => void;

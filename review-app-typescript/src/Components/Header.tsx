@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 interface HeaderProp {
   title: string;
   bgColor: string;
@@ -14,9 +15,11 @@ export default function Header({
     color: textColor,
   };
   return (
-    <header style={HeaderStyles} className="header">
-      <h2>Review App</h2>
-    </header>
+    <Link to="/">
+      <header style={HeaderStyles} className="header">
+        <h2>{title}</h2>
+      </header>
+    </Link>
   );
 }
 Header.defaultProps = {
