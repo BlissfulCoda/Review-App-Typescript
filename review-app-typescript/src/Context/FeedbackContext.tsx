@@ -45,14 +45,22 @@ export function FeedbackProvider({
   };
 
   /*------ Update an item -------*/
-  const updateFeedback = (
+  const updateFeedback = async (
     id: string | number,
     upItem: FeedbackDataInterface
-  ): void => {
+  ) => {
+    const response = await fetch(`feedback/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(upItem),
+    });
+
+    const data = await response.json();
+
     setFeedback(
       feedback.map((item) => {
         if (item.id === id) {
-          return { ...upItem, ...feedback };
+          return { ...data, ...feedback };
         } else {
           return item;
         }
@@ -72,8 +80,9 @@ export function FeedbackProvider({
   };
 
   /*------ Delete an item -------*/
-  const handleDelete = (id: number | string) => {
+  const handleDelete = async (id: number | string) => {
     if (window.confirm("Are you sure you want to delete this feedback ?")) {
+      await fetch(`/feedback/${id}`, { method: "DELETE" });
       setFeedback(feedback.filter((item) => id !== item.id));
     }
   };
